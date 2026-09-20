@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="StockMaster.API/StockMaster.API.csproj" />
+  <Project Path="StockMaster.Application/StockMaster.Application.csproj" />
+  <Project Path="StockMaster.BlazorWasm/StockMaster.BlazorWasm.csproj" />
+  <Project Path="StockMaster.Domain/StockMaster.Domain.csproj" />
+  <Project Path="StockMaster.Infraestructure/StockMaster.Infraestructure.csproj" />
+</Solution>
