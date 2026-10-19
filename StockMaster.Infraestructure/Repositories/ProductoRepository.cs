@@ -1,7 +1,6 @@
 namespace StockMaster.Infraestructure.Repositories;
 
 using System.Security;
-using Microsoft.EntityFrameworkCore;
 using StockMaster.Application.Interfaces;
 using StockMaster.Domain;
 
@@ -29,9 +28,10 @@ public class ProductoRepository : IProductoRepository
     }
 
     // Actualizar datos de un producto
-    public async Task ActualizarAsync(Producto producto)
+    public Task ActualizarAsync(Producto producto)
     {
         _context.Productos.Update(producto);
+        return Task.CompletedTask;
     }
 
     // Consultar lista completa de productos

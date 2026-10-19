@@ -1,6 +1,6 @@
 namespace StockMaster.Application.Interfaces;
 
-public interface IUnitOfWork : IDisposable
+public interface IUnitOfWork 
 {
     // Repositorios expuestos como propiedades de solo lectura
     IProductoRepository Productos { get; }
