@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
       "projectName": "StockMaster.Domain",
-      "projectPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
+      "projectPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
       "packagesPath": "C:\\Users\\Alan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alan\\AppData\\Roaming\\NuGet\\NuGet.Config"

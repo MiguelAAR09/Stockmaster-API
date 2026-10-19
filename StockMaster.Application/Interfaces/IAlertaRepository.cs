@@ -7,6 +7,6 @@ public interface IAlertaRepository
     Task<IEnumerable<Alerta>> ObtenerTodasLasAlertasAsync();
     Task AgregarAlertaAsync(Alerta alerta);
     Task ActualizarAlertaAsync(Alerta alerta);
-    Task<IEnumerable<Alerta>> ObtenerTodasLasAlertasPorProductoAsync(int id);
+    Task<IEnumerable<Alerta>> ObtenerAlertasPorProductoIdAsync(int id);
 
 }

@@ -1,0 +1,43 @@
+# Build results
+bin/
+obj/
+out/
+ 
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docview
+ 
+# Rider
+.idea/
+ 
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+ 
+# Entity Framework Migrations (comenta esta línea si quieres versionar las migraciones)
+# **/Migrations/
+ 
+# Secrets y configuración local
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+ 
+# Azure
+*.pubxml
+*.pubxml.user
+PublishProfiles/
+ 
+# OS
+.DS_Store
+Thumbs.db
+ 
+# Logs
+*.log
+logs/

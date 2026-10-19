@@ -38,6 +38,10 @@ public class StockMasterDbContext : DbContext
     .WithMany()
     .HasForeignKey(p => p.ClienteId);
     
+    modelBuilder.Entity<Producto>()
+    .HasMany( p=> p.Alertas)
+    .WithOne()
+    .HasForeignKey(a => a.ProductoId);
 
     }
 

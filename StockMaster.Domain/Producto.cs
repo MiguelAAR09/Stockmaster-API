@@ -11,6 +11,7 @@ public class Producto
     public int Stock { get; set; }
     public int StockMinimo { get; set; }
 
+    public List<Alerta> Alertas { get; set; } = new List<Alerta>();
 }
 
 

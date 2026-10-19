@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Application\\StockMaster.Application.csproj",
+      "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Application\\StockMaster.Application.csproj",
       "projectName": "StockMaster.Application",
-      "projectPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Application\\StockMaster.Application.csproj",
+      "projectPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Application\\StockMaster.Application.csproj",
       "packagesPath": "C:\\Users\\Alan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Application\\obj\\",
+      "outputPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -51,8 +51,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj": {
-              "projectPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj"
+            "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj": {
+              "projectPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj"
             }
           }
         }

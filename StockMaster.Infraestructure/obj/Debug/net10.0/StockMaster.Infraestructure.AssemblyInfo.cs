@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StockMaster.Infraestructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48ccd308d0ca424e44a2836634002b0d809edd7e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb442b57f52c64ab5265179d8ac3e3d137f18aeb")]
 [assembly: System.Reflection.AssemblyProductAttribute("StockMaster.Infraestructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StockMaster.Infraestructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

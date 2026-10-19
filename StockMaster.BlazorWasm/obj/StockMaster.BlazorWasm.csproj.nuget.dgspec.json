@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj": {}
+    "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj": {
+    "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj",
+        "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj",
         "projectName": "StockMaster.BlazorWasm",
-        "projectPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj",
+        "projectPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj",
         "packagesPath": "C:\\Users\\Alan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\obj\\",
+        "outputPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj": {
-                "projectPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj"
+              "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj": {
+                "projectPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj"
               }
             }
           }
@@ -386,14 +386,14 @@
         }
       }
     },
-    "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj": {
+    "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
         "projectName": "StockMaster.Domain",
-        "projectPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
+        "projectPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\StockMaster.Domain.csproj",
         "packagesPath": "C:\\Users\\Alan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alan\\AppData\\Roaming\\NuGet\\NuGet.Config"

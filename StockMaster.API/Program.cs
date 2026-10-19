@@ -1,6 +1,4 @@
 using StockMaster.Application.Interfaces;
-using StockMaster.Infraestructure;
 
+var builder = WebApplication.CreateBuilder(args);
 // Registro de dependencias
-builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
-builder.Services.AddScoped<RegistrarClientesUseCase>();

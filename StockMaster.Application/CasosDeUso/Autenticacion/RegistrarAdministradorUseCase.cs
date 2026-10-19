@@ -30,7 +30,7 @@ public class RegistrarAdministradorUseCase
             Nombre = dto.Nombre,
             Correo = dto.Correo,
             ContrasenaHash = contrasenaHasheada,
-            Rol = StockMaster.Domain.RolUsuario.Administrador, // 👈 Nombre completo para romper la ambigüedad
+            Rol = Domain.RolUsuario.Administrador, // 👈 Nombre completo para romper la ambigüedad
             Activo = true
         };
 
@@ -42,7 +42,7 @@ public class RegistrarAdministradorUseCase
             Id = nuevoAdministrador.Id,
             Nombre = nuevoAdministrador.Nombre,
             Correo = nuevoAdministrador.Correo,
-            Rol = (StockMaster.Application.DTOs.RolUsuario)nuevoAdministrador.Rol, // 👈 Casteo explícito
+            Rol = nuevoAdministrador.Rol.ToString(), // 👈 Casteo explícito
             Activo = nuevoAdministrador.Activo
         };
     }

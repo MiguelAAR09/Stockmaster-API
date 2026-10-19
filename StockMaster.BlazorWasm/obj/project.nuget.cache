@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TSKlSOjzMw8=",
+  "dgSpecHash": "aRGUgvD/7LQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alan\\Desktop\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj",
+  "projectFilePath": "C:\\Users\\Alan\\Desktop\\Todo\\Personal\\Proyecto C#\\Proyecto\\StockMaster.BlazorWasm\\StockMaster.BlazorWasm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alan\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.1\\microsoft.aspnetcore.app.internal.assets.10.0.1.nupkg.sha512",
     "C:\\Users\\Alan\\.nuget\\packages\\microsoft.aspnetcore.authorization\\10.0.1\\microsoft.aspnetcore.authorization.10.0.1.nupkg.sha512",
