@@ -5,6 +5,6 @@ using StockMaster.Domain;
 public interface ITokenGenerator
 {
 
-    string GenerateToken(Usuario usuario);
+    string GenerateToken(int Id, string email, RolUsuario rol);
 
 }

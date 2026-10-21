@@ -37,7 +37,7 @@ public class LoginUseCase
             throw new InvalidOperationException("Credenciales inválidas.");
         }
 
-        string token = _tokenGenerator.GenerateToken(usuario);
+        string token = _tokenGenerator.GenerateToken(usuario.Id, usuario.Correo, usuario.Rol);
 
         RespuestaLoginDTO respuesta = new RespuestaLoginDTO
         {

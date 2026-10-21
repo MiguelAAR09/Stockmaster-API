@@ -1,6 +1,6 @@
 using StockMaster.Application.Interfaces;
 using StockMaster.Domain;
-
+using Microsoft.EntityFrameworkCore;
 namespace StockMaster.Infraestructure.Repositories;
 
 public class UsuariosRepository : IUsuarioRepository

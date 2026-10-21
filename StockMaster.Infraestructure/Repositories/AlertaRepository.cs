@@ -1,6 +1,6 @@
 using System;
 
-
+using Microsoft.EntityFrameworkCore;
 using StockMaster.Application.Interfaces;
 using StockMaster.Domain;
 namespace StockMaster.Infraestructure.Repositories;

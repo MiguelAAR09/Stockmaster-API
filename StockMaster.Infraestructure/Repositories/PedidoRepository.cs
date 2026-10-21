@@ -1,7 +1,7 @@
 
 using StockMaster.Domain;
 using StockMaster.Application.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace StockMaster.Infraestructure.Repositories;
 
@@ -23,7 +23,7 @@ public class PedidoRepository : IPedidoRepository
     }
         public async  Task<IEnumerable<DetallePedido>> ObtenerDetallesPorPedidoIdAsync(int pedidoId)
         {
-            return await _context.DetallesPedidos.Where(d => d.PedidoId == pedidoId).ToListAsync().ToListAsync();
+            return await _context.DetallesPedidos.Where(d => d.PedidoId == pedidoId).ToListAsync();
         }
     
     public async Task<IEnumerable<Pedido>> ObtenerTodosAsync()

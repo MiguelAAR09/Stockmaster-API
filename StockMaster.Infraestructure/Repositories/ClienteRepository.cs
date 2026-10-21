@@ -1,6 +1,7 @@
 
 using StockMaster.Application.Interfaces;
 using StockMaster.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace StockMaster.Infraestructure.Repositories;
 
@@ -19,7 +20,7 @@ public class ClienteRepository : IClienteRepository
 
     public async Task<Cliente?> ObtenerClientePorCorreoAsync(string correo)
     {
-        return await _context.Clientes.FirstOrDefaultAsync(c => c.Correo == correo);
+        return await _context.Clientes.FirstOrDefaultAsync(c => c.CorreoContacto == correo);
     }
     public async Task<IEnumerable<Cliente>> ObtenerTodosLosClientesAsync()
     {
