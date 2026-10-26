@@ -14,7 +14,7 @@ public class AlertaRepository : IAlertaRepository
         _context = context;
     }
 
-    public async Task<Alerta> ObtenerAlertaPorIdAsync (int id)
+    public async Task<Alerta?> ObtenerAlertaPorIdAsync(int id)
     {
         return await _context.Alertas.FirstOrDefaultAsync(a => a.Id == id);
     }

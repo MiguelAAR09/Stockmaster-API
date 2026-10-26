@@ -10,6 +10,7 @@ public class Producto
     public decimal PrecioUnitario { get; set; }
     public int Stock { get; set; }
     public int StockMinimo { get; set; }
+    public bool Activo { get; set; } = true;
 
     public List<Alerta> Alertas { get; set; } = new List<Alerta>();
 }

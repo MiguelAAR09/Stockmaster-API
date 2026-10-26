@@ -15,7 +15,7 @@ public class ActualizarEstadoAlertasUseCase
 
     public async Task<RespuestaAlertaDTO> EjecutarAsync(ActualizarEstadoAlertaDTO dto)
     {
-        Alerta alertaBuscada = await _unitOfWork.Alertas.ObtenerAlertaPorIdAsync(dto.AlertaId);
+        Alerta? alertaBuscada = await _unitOfWork.Alertas.ObtenerAlertaPorIdAsync(dto.AlertaId);
 
         if (alertaBuscada == null)
         {

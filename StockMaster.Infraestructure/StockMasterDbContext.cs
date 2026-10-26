@@ -43,6 +43,10 @@ public class StockMasterDbContext : DbContext
     .WithOne()
     .HasForeignKey(a => a.ProductoId);
 
+    modelBuilder.Entity<Producto>()
+    .Property(p => p.Activo)
+    .HasDefaultValue(true);
+
     }
 
 }
