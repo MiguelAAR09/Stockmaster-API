@@ -6,7 +6,7 @@ using MailKit.Security;
 using StockMaster.Application.Interfaces;
 namespace StockMaster.Infraestructure.Services;
 
-public class EmailService
+public class EmailService : IEmailService
 {
     private readonly IConfiguration _configuration;
 
