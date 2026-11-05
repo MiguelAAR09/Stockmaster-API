@@ -4,6 +4,8 @@ using StockMaster.Domain;
 
 public class StockMasterDbContext : DbContext
 {
+    // Nombre del filtro de borrado lógico, para ignorarlo sin desactivar otros filtros
+    public const string FiltroProductosActivos = "ProductosActivos";
 
     public StockMasterDbContext(DbContextOptions<StockMasterDbContext> options) : base(options)
     {
@@ -25,7 +27,7 @@ public class StockMasterDbContext : DbContext
 
     modelBuilder.Entity<DetallePedido>()
     .HasOne(d => d.pedido)
-    .WithMany()
+    .WithMany(p => p.Detalles)
     .HasForeignKey(d => d.PedidoId);
 
     modelBuilder.Entity<DetallePedido>()
@@ -40,12 +42,29 @@ public class StockMasterDbContext : DbContext
     
     modelBuilder.Entity<Producto>()
     .HasMany( p=> p.Alertas)
-    .WithOne()
+    .WithOne(a => a.Producto)
     .HasForeignKey(a => a.ProductoId);
 
     modelBuilder.Entity<Producto>()
     .Property(p => p.Activo)
-    .HasDefaultValue(true);
+    .HasDefaultValue(true)
+    .HasSentinel(true); // Sin esto, un INSERT con Activo = false omitiría la columna y la BD pondría true
+
+    // Nombre único solo entre productos activos: el de un inactivo se puede reutilizar
+    modelBuilder.Entity<Producto>()
+    .HasIndex(p => p.Nombre)
+    .IsUnique()
+    .HasFilter("\"Activo\" = true");
+
+    // Borrado lógico: toda consulta sobre Productos ignora los inactivos.
+    // Para ver inactivos (historial, auditoría) usar .IgnoreQueryFilters([FiltroProductosActivos])
+    modelBuilder.Entity<Producto>()
+    .HasQueryFilter(FiltroProductosActivos, p => p.Activo);
+
+    // Las alertas de un producto desactivado también se ocultan (siguen en la BD).
+    // Mismo nombre: IgnoreQueryFilters([FiltroProductosActivos]) apaga ambos filtros
+    modelBuilder.Entity<Alerta>()
+    .HasQueryFilter(FiltroProductosActivos, a => a.Producto!.Activo);
 
     }
 

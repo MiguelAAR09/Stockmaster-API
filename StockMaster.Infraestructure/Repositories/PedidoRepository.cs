@@ -23,7 +23,11 @@ public class PedidoRepository : IPedidoRepository
     }
         public async  Task<IEnumerable<DetallePedido>> ObtenerDetallesPorPedidoIdAsync(int pedidoId)
         {
-            return await _context.DetallesPedidos.Where(d => d.PedidoId == pedidoId).ToListAsync();
+            // Los detalles son historial: deben verse aunque el producto esté inactivo
+            return await _context.DetallesPedidos
+                .IgnoreQueryFilters([StockMasterDbContext.FiltroProductosActivos])
+                .Where(d => d.PedidoId == pedidoId)
+                .ToListAsync();
         }
     
     public async Task<IEnumerable<Pedido>> ObtenerTodosAsync()
