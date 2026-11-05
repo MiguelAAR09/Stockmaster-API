@@ -66,6 +66,21 @@ public class StockMasterDbContext : DbContext
     modelBuilder.Entity<Alerta>()
     .HasQueryFilter(FiltroProductosActivos, a => a.Producto!.Activo);
 
+    // Concurrencia optimista: Npgsql mapea esta propiedad sombra a la columna de sistema xmin
+    // (no crea columna). Si dos operaciones descuentan stock del mismo producto a la vez,
+    // la segunda falla con DbUpdateConcurrencyException en lugar de pisar a la primera.
+    modelBuilder.Entity<Producto>()
+    .Property<uint>("Version")
+    .IsRowVersion();
+
+    // Última barrera en la BD contra stock negativo, aunque falle la validación en código
+    modelBuilder.Entity<Producto>()
+    .ToTable(t =>
+    {
+        t.HasCheckConstraint("CK_Productos_Stock_NoNegativo", "\"Stock\" >= 0");
+        t.HasCheckConstraint("CK_Productos_StockMinimo_NoNegativo", "\"StockMinimo\" >= 0");
+    });
+
     }
 
 }

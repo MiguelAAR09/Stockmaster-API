@@ -6,17 +6,17 @@ using StockMaster.Application.DTOs;
 
 public class EditarDetalleProductoUseCase
 {
-    private readonly IProductoRepository _productoRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public EditarDetalleProductoUseCase(IProductoRepository productoRepository)
+    public EditarDetalleProductoUseCase(IUnitOfWork unitOfWork)
     {
-        _productoRepository = productoRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<Producto> EjecutarAsync(int id, ProductoDTO dto)
     {
         // 1. Verificar existencia
-        var productoExistente = await _productoRepository.ObtenerPorIdAsync(id);
+        var productoExistente = await _unitOfWork.Productos.ObtenerPorIdAsync(id);
         if (productoExistente == null)
         {
             throw new KeyNotFoundException($"No existe un producto con el ID: {id}");
@@ -29,7 +29,7 @@ public class EditarDetalleProductoUseCase
         }
 
         // 3. Validar duplicados (Pertenecientes a OTRO producto)
-        var productoConMismoNombre = await _productoRepository.ObtenerPorNombreAsync(dto.Nombre.Trim());
+        var productoConMismoNombre = await _unitOfWork.Productos.ObtenerPorNombreAsync(dto.Nombre.Trim());
         if (productoConMismoNombre != null && productoConMismoNombre.Id != id)
         {
             throw new ArgumentException("Ya existe otro producto registrado con ese nombre.");
@@ -59,8 +59,9 @@ public class EditarDetalleProductoUseCase
         productoExistente.StockMinimo = dto.StockMinimo;
 
         // 6. Guardar cambios
-        await _productoRepository.ActualizarAsync(productoExistente);
-        
+        await _unitOfWork.Productos.ActualizarAsync(productoExistente);
+        await _unitOfWork.SaveChangesAsync();
+
         return productoExistente;
     }
 }

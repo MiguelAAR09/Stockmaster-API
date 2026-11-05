@@ -1,5 +1,6 @@
 using StockMaster.Domain;
 using StockMaster.Application.Interfaces;
+using StockMaster.Application.Excepciones;
 using Microsoft.EntityFrameworkCore;
 
 namespace StockMaster.Infraestructure.Repositories;
@@ -26,9 +27,16 @@ public class UnitOfWork : IUnitOfWork
 
     public async Task<int> SaveChangesAsync()
     {
-        return await _context.SaveChangesAsync();
-        
-            
-     }
+        try
+        {
+            return await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            // Se traduce a una excepción de Application para que los casos de uso no dependan de EF Core
+            throw new ConflictoConcurrenciaException(
+                "Los datos fueron modificados por otra operación. Vuelva a intentarlo.", ex);
+        }
+    }
 
 }
