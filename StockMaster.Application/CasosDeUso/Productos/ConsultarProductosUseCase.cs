@@ -15,5 +15,5 @@ public class ConsultarProductosUseCase
     public async Task<IEnumerable<Producto>> EjecutarAsync()
     {
         return await _unitOfWork.Productos.ObtenerTodosAsync();
-    } 
+    }
 }

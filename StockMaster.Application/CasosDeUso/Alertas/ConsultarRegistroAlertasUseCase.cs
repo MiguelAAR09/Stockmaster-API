@@ -27,7 +27,7 @@ public class ConsultarRegistroAlertasUseCase
             TipoAlerta = a.Descripcion,
             FechaGeneracion = a.Fecha,
             Estado = a.Estado.ToString(),
-            
+
         });
 
         return alertasDTO;

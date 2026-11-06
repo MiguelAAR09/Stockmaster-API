@@ -14,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Lectura de clave secreta JWT
-var jwtKey = builder.Configuration["Jwt:Key"] 
+var jwtKey = builder.Configuration["Jwt:Key"]
     ?? throw new InvalidOperationException("La clave secreta de JWT no está configurada.");
 
 // Configuración de Autenticación JWT

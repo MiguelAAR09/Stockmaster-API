@@ -5,42 +5,45 @@ using StockMaster.Application.Interfaces;
 using StockMaster.Application.DTOs;
 public class CrearProductoUseCase
 {
-    private readonly IProductoRepository _productoRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public CrearProductoUseCase(IProductoRepository productoRepository)
+    public CrearProductoUseCase(IUnitOfWork unitOfWork)
     {
-        _productoRepository = productoRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<Producto> EjecutarAsync(ProductoDTO producto)
     {
 
-        if(string.IsNullOrWhiteSpace(producto.Nombre) )
+        if (string.IsNullOrWhiteSpace(producto.Nombre))
         {
             throw new ArgumentException("El nombre del producto no puede estar vacío.");
         }
 
-        if(await _productoRepository.ObtenerPorNombreAsync(producto.Nombre) != null)
+        // Se compara con el nombre recortado, que es como se guarda
+        var nombre = producto.Nombre.Trim();
+
+        if (await _unitOfWork.Productos.ObtenerPorNombreAsync(nombre) != null)
         {
             throw new ArgumentException("Ya existe un producto con ese nombre.");
-        }  
-        if(producto.PrecioUnitario <= 0)
+        }
+        if (producto.PrecioUnitario <= 0)
         {
             throw new ArgumentException("El precio del producto no puede ser cero o negativo.");
         }
 
-        if(producto.Stock < 0)
+        if (producto.Stock < 0)
         {
             throw new ArgumentException("El stock del producto no puede ser negativo.");
         }
-        if(producto.StockMinimo <= 0)
+        if (producto.StockMinimo < 0)
         {
             throw new ArgumentException("El stock minimo del producto no puede ser negativo.");
         }
 
         var nuevoProducto = new Producto
         {
-            Nombre = producto.Nombre.Trim(),
+            Nombre = nombre,
             Categoria = producto.Categoria,
             PrecioUnitario = producto.PrecioUnitario,
             Stock = producto.Stock,
@@ -48,9 +51,9 @@ public class CrearProductoUseCase
             // El "Id" no lo asignamos aquí porque la base de datos lo creará automáticamente
         };
 
-        
-        
-        await _productoRepository.AgregarAsync(nuevoProducto);
+        await _unitOfWork.Productos.AgregarAsync(nuevoProducto);
+        await _unitOfWork.SaveChangesAsync();
+
         return nuevoProducto;
     }
 }

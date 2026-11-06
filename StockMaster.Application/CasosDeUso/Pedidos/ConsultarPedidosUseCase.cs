@@ -16,5 +16,5 @@ public class ConsultarPedidosUseCase
     {
         return await _unitOfWork.Pedidos.ObtenerTodosAsync();
     }
-   
+
 }

@@ -19,18 +19,22 @@ public class PedidoRepository : IPedidoRepository
     }
     public async Task<IEnumerable<Pedido>> ObtenerPedidosPorClienteIdAsync(int clienteId)
     {
-        return await _context.Pedidos.Where(p => p.ClienteId == clienteId ).ToListAsync();
+        return await _context.Pedidos.Where(p => p.ClienteId == clienteId).ToListAsync();
     }
-        public async  Task<IEnumerable<DetallePedido>> ObtenerDetallesPorPedidoIdAsync(int pedidoId)
-        {
-            return await _context.DetallesPedidos.Where(d => d.PedidoId == pedidoId).ToListAsync();
-        }
-    
+    public async Task<IEnumerable<DetallePedido>> ObtenerDetallesPorPedidoIdAsync(int pedidoId)
+    {
+        // Los detalles son historial: deben verse aunque el producto esté inactivo
+        return await _context.DetallesPedidos
+            .IgnoreQueryFilters([StockMasterDbContext.FiltroProductosActivos])
+            .Where(d => d.PedidoId == pedidoId)
+            .ToListAsync();
+    }
+
     public async Task<IEnumerable<Pedido>> ObtenerTodosAsync()
     {
         return await _context.Pedidos.ToListAsync();
     }
-      public async  Task AgregarAsync(Pedido pedido)
+    public async Task AgregarAsync(Pedido pedido)
     {
 
         await _context.Pedidos.AddAsync(pedido);

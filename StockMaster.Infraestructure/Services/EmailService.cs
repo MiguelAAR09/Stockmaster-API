@@ -19,7 +19,7 @@ public class EmailService : IEmailService
     {
         var email = new MimeMessage();
 
-        email.From.Add(new MailboxAddress(_configuration["SmtpSettings:SenderName"],_configuration["SmtpSettings:SenderEmail"]));
+        email.From.Add(new MailboxAddress(_configuration["SmtpSettings:SenderName"], _configuration["SmtpSettings:SenderEmail"]));
 
         email.To.Add(MailboxAddress.Parse(destinatario));
         email.Subject = asunto;
@@ -41,14 +41,14 @@ public class EmailService : IEmailService
 
         // Conexión segura usando STARTTLS
         await smtp.ConnectAsync(
-            _configuration["SmtpSettings:Server"], 
-            int.Parse(_configuration["SmtpSettings:Port"] ?? "587"), 
+            _configuration["SmtpSettings:Server"],
+            int.Parse(_configuration["SmtpSettings:Port"] ?? "587"),
             SecureSocketOptions.StartTls);
-            
+
         await smtp.AuthenticateAsync(
-             _configuration["SmtpSettings:Username"], 
+             _configuration["SmtpSettings:Username"],
              _configuration["SmtpSettings:Password"]);
-            
+
         await smtp.SendAsync(email);
         await smtp.DisconnectAsync(true);
     }

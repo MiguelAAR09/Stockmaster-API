@@ -47,3 +47,8 @@ logs/
 
 .vscode/
 .env
+
+# Skills
+**/skills/
+
+migracion.sql

@@ -1,4 +1,5 @@
 ﻿namespace StockMaster.Application.Interfaces;
+
 using StockMaster.Domain;
 
 public interface IPedidoRepository
@@ -10,6 +11,6 @@ public interface IPedidoRepository
     Task<IEnumerable<Pedido>> ObtenerTodosAsync();
     Task AgregarAsync(Pedido pedido);
     Task ActualizarAsync(Pedido pedido);
-    
-    
+
+
 }

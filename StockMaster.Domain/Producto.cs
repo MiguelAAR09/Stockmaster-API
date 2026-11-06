@@ -3,10 +3,10 @@
 public class Producto
 {
     public int Id { get; set; }
-    public string Nombre { get; set; }
+    public string Nombre { get; set; } = string.Empty;
     public CategoriaProducto Categoria { get; set; }
 
-    
+
     public decimal PrecioUnitario { get; set; }
     public int Stock { get; set; }
     public int StockMinimo { get; set; }
@@ -17,10 +17,10 @@ public class Producto
 
 
 public enum CategoriaProducto
-    {
-        Tecnologia,
-        Hogar,
-        Moda,
-        Alimentos,
-        Entretenimiento
-    }
+{
+    Tecnologia,
+    Hogar,
+    Moda,
+    Alimentos,
+    Entretenimiento
+}

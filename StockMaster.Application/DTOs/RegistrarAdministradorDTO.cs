@@ -18,5 +18,5 @@ public class RegistrarAdministradorDTO
     public string Password { get; set; } = string.Empty;
 
     // Se asigna por defecto como Administrador
-    
+
 }
