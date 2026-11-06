@@ -9,7 +9,7 @@ using StockMaster.Domain;
 
 namespace StockMaster.Infraestructure;
 
-public static class DependencyInjection 
+public static class DependencyInjection
 {
     public static IServiceCollection AddInfraestructureServices(this IServiceCollection services,
     IConfiguration configuration)
@@ -17,7 +17,7 @@ public static class DependencyInjection
         //Base de datos
         services.AddDbContext<StockMasterDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-        
+
         //Repositorios
         services.AddScoped<IUsuarioRepository, UsuariosRepository>();
         services.AddScoped<IClienteRepository, ClienteRepository>();
@@ -26,15 +26,15 @@ public static class DependencyInjection
 
         //Middleware
 
-        
+
         //Unit of work
-        services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         // Servicios stateless (Transient / singleton)
         services.AddTransient<IPasswordHasher, PasswordHasher>();
         services.AddTransient<IEmailService, EmailService>();
         services.AddTransient<ITokenGenerator, TokenGenerator>();
-        
+
 
         return services;
     }

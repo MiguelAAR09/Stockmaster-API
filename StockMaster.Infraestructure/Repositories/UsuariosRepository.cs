@@ -16,7 +16,7 @@ public class UsuariosRepository : IUsuarioRepository
     {
         return await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
     }
-     public async Task<Usuario?> ObtenerUsuarioPorCorreoAsync(string correo)
+    public async Task<Usuario?> ObtenerUsuarioPorCorreoAsync(string correo)
     {
         return await _context.Usuarios.FirstOrDefaultAsync(u => u.Correo == correo);
     }
@@ -28,10 +28,10 @@ public class UsuariosRepository : IUsuarioRepository
     {
         await _context.Usuarios.AddAsync(usuario);
     }
-    public  Task ActualizarUsuarioAsync(Usuario usuario)
+    public Task ActualizarUsuarioAsync(Usuario usuario)
     {
-         _context.Usuarios.Update(usuario);
-         return Task.CompletedTask;
+        _context.Usuarios.Update(usuario);
+        return Task.CompletedTask;
     }
 
     public async Task AgregarAdministradorAsync(Usuario administrador)

@@ -15,7 +15,7 @@ public class CrearProductoUseCase
     public async Task<Producto> EjecutarAsync(ProductoDTO producto)
     {
 
-        if(string.IsNullOrWhiteSpace(producto.Nombre) )
+        if (string.IsNullOrWhiteSpace(producto.Nombre))
         {
             throw new ArgumentException("El nombre del producto no puede estar vacío.");
         }
@@ -23,20 +23,20 @@ public class CrearProductoUseCase
         // Se compara con el nombre recortado, que es como se guarda
         var nombre = producto.Nombre.Trim();
 
-        if(await _unitOfWork.Productos.ObtenerPorNombreAsync(nombre) != null)
+        if (await _unitOfWork.Productos.ObtenerPorNombreAsync(nombre) != null)
         {
             throw new ArgumentException("Ya existe un producto con ese nombre.");
         }
-        if(producto.PrecioUnitario <= 0)
+        if (producto.PrecioUnitario <= 0)
         {
             throw new ArgumentException("El precio del producto no puede ser cero o negativo.");
         }
 
-        if(producto.Stock < 0)
+        if (producto.Stock < 0)
         {
             throw new ArgumentException("El stock del producto no puede ser negativo.");
         }
-        if(producto.StockMinimo < 0)
+        if (producto.StockMinimo < 0)
         {
             throw new ArgumentException("El stock minimo del producto no puede ser negativo.");
         }

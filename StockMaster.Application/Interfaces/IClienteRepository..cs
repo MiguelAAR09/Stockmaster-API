@@ -9,5 +9,5 @@ public interface IClienteRepository
     Task<IEnumerable<Cliente>> ObtenerTodosLosClientesAsync();
     Task AgregarClienteAsync(Cliente cliente);
     Task ActualizarClienteAsync(Cliente cliente);
-    
+
 }

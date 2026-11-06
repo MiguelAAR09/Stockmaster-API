@@ -6,7 +6,7 @@ using StockMaster.Application.DTOs;
 
 public class LoginUseCase
 {
-     private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IPasswordHasher _passwordHasher; // 👈 1. Inyectamos el hasher de contraseñas
     private readonly ITokenGenerator _tokenGenerator;
 
@@ -15,14 +15,15 @@ public class LoginUseCase
         _unitOfWork = unitOfWork;
         _passwordHasher = passwordHasher;
         _tokenGenerator = tokenGenerator;
-        
+
     }
 
     public async Task<RespuestaLoginDTO> EjecutarAsync(LoginDTO dto)
     {
         Usuario usuario = await _unitOfWork.Usuarios.ObtenerUsuarioPorCorreoAsync(dto.Correo);
 
-        if(usuario == null){
+        if (usuario == null)
+        {
             throw new InvalidOperationException($"El usuario ingresado no se encuentra registrado.");
         }
 

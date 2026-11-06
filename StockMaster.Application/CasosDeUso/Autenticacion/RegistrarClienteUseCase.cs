@@ -19,7 +19,7 @@ public class RegistrarClienteUseCase
     {
         // 2. Buscamos si el usuario ya existe en la tabla de Usuarios
         var usuarioExistente = await _unitOfWork.Usuarios.ObtenerUsuarioPorCorreoAsync(dto.Correo);
-        
+
         // 3. Si NO es null, significa que el correo ya está registrado y debemos detener el flujo
         if (usuarioExistente != null)
         {
@@ -47,11 +47,11 @@ public class RegistrarClienteUseCase
             Telefono = dto.Telefono,
             Direccion = dto.Direccion,
             CiudadResidencia = dto.CiudadResidencia,
-            CorreoContacto = dto.Correo, 
+            CorreoContacto = dto.Correo,
             Usuario = nuevoUsuario // Asociamos el nuevo usuario al cliente
         };
         await _unitOfWork.Clientes.AgregarClienteAsync(nuevoCliente);
-        
+
         await _unitOfWork.SaveChangesAsync();
 
         return nuevoCliente;

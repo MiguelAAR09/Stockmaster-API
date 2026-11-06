@@ -7,7 +7,7 @@ public class AlertaProductoDTO
 
     public string NombreProducto { get; set; } = string.Empty;
 
-    
+
     public string TipoAlerta { get; set; } = string.Empty; // ej. "Stock Bajo", "Agotado"
     public DateTime FechaGeneracion { get; set; }
 
