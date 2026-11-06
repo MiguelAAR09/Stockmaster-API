@@ -20,7 +20,7 @@ namespace StockMaster.Infraestructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nombre = table.Column<string>(type: "text", nullable: false),
                     Categoria = table.Column<int>(type: "integer", nullable: false),
-                    PrecioUnitario = table.Column<decimal>(type: "numeric", nullable: false),
+                    PrecioUnitario = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false),
                     Stock = table.Column<int>(type: "integer", nullable: false),
                     StockMinimo = table.Column<int>(type: "integer", nullable: false),
                     Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
@@ -69,7 +69,7 @@ namespace StockMaster.Infraestructure.Migrations
                         column: x => x.ProductoId,
                         principalTable: "Productos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,7 +95,7 @@ namespace StockMaster.Infraestructure.Migrations
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,7 +106,7 @@ namespace StockMaster.Infraestructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ClienteId = table.Column<int>(type: "integer", nullable: false),
                     FechaPedido = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Total = table.Column<decimal>(type: "numeric", nullable: false),
+                    Total = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false),
                     MetodoPago = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -117,7 +117,7 @@ namespace StockMaster.Infraestructure.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,7 +129,7 @@ namespace StockMaster.Infraestructure.Migrations
                     PedidoId = table.Column<int>(type: "integer", nullable: false),
                     ProductoId = table.Column<int>(type: "integer", nullable: false),
                     Cantidad = table.Column<int>(type: "integer", nullable: false),
-                    PrecioUnitario = table.Column<decimal>(type: "numeric", nullable: false)
+                    PrecioUnitario = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,13 +145,19 @@ namespace StockMaster.Infraestructure.Migrations
                         column: x => x.ProductoId,
                         principalTable: "Productos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Alertas_ProductoId",
                 table: "Alertas",
                 column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Clientes_NumeroIdentificacion",
+                table: "Clientes",
+                column: "NumeroIdentificacion",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_UsuarioId",
@@ -180,6 +186,12 @@ namespace StockMaster.Infraestructure.Migrations
                 column: "Nombre",
                 unique: true,
                 filter: "\"Activo\" = true");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Correo",
+                table: "Usuarios",
+                column: "Correo",
+                unique: true);
         }
 
         /// <inheritdoc />

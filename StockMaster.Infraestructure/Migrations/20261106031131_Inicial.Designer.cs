@@ -12,7 +12,7 @@ using StockMaster.Infraestructure;
 namespace StockMaster.Infraestructure.Migrations
 {
     [DbContext(typeof(StockMasterDbContext))]
-    [Migration("20261105005704_Inicial")]
+    [Migration("20261106031131_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -94,6 +94,9 @@ namespace StockMaster.Infraestructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NumeroIdentificacion")
+                        .IsUnique();
+
                     b.HasIndex("UsuarioId")
                         .IsUnique();
 
@@ -115,7 +118,8 @@ namespace StockMaster.Infraestructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<decimal>("PrecioUnitario")
-                        .HasColumnType("numeric");
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("integer");
@@ -147,7 +151,8 @@ namespace StockMaster.Infraestructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("numeric");
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
 
                     b.HasKey("Id");
 
@@ -177,7 +182,8 @@ namespace StockMaster.Infraestructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("PrecioUnitario")
-                        .HasColumnType("numeric");
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
 
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
@@ -233,6 +239,9 @@ namespace StockMaster.Infraestructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Correo")
+                        .IsUnique();
+
                     b.ToTable("Usuarios");
                 });
 
@@ -241,7 +250,7 @@ namespace StockMaster.Infraestructure.Migrations
                     b.HasOne("StockMaster.Domain.Producto", "Producto")
                         .WithMany("Alertas")
                         .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Producto");
@@ -252,7 +261,7 @@ namespace StockMaster.Infraestructure.Migrations
                     b.HasOne("StockMaster.Domain.Usuario", "Usuario")
                         .WithOne()
                         .HasForeignKey("StockMaster.Domain.Cliente", "UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Usuario");
@@ -269,7 +278,7 @@ namespace StockMaster.Infraestructure.Migrations
                     b.HasOne("StockMaster.Domain.Producto", "Producto")
                         .WithMany()
                         .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Producto");
@@ -282,7 +291,7 @@ namespace StockMaster.Infraestructure.Migrations
                     b.HasOne("StockMaster.Domain.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Cliente");
