@@ -10,8 +10,8 @@ public class Usuario
     public bool Activo { get; set; } = true;
 }
 
-public enum RolUsuario
-{
-    Administrador,
-    Cliente
-}
+   /// Los valores son explícitos para que un rol sin asignar (0) sea el de menor privilegio.
+// No reordenar ni renumerar: el valor se guarda como entero en la base de datos.
+
+   public enum RolUsuario { Cliente = 0, Administrador = 1 }
+
