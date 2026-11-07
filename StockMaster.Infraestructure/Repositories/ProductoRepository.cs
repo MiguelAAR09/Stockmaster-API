@@ -1,7 +1,6 @@
 namespace StockMaster.Infraestructure.Repositories;
 
 using Microsoft.EntityFrameworkCore;
-using System.Security;
 using StockMaster.Application.Interfaces;
 using StockMaster.Domain;
 
