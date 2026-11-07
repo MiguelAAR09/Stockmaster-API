@@ -33,7 +33,7 @@ public class RegistrarClienteUseCase
             Nombre = $"{dto.Nombres} {dto.Apellidos}",
             Correo = dto.Correo,
             ContrasenaHash = contraseñaHasheada,
-            Rol = StockMaster.Domain.RolUsuario.Cliente,
+            Rol = RolUsuario.Cliente,
             Activo = true
         };
 
