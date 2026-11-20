@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using StockMaster.Application.Interfaces;
 using StockMaster.Infraestructure.Services;
+using StockMaster.Infraestructure.Settings;
 using StockMaster.Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,12 @@ public static class DependencyInjection
 
         //Unit of work
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        // Configuración SMTP (Options Pattern)
+        services.AddOptions<SmtpSettings>()
+            .Bind(configuration.GetSection(SmtpSettings.SectionName))
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
 
         // Servicios stateless (Transient / singleton)
         services.AddTransient<IPasswordHasher, PasswordHasher>();
