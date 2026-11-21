@@ -30,7 +30,7 @@ public class RegistrarAdministradorUseCase
             Nombre = dto.Nombre,
             Correo = dto.Correo,
             ContrasenaHash = contrasenaHasheada,
-            Rol = Domain.RolUsuario.Administrador, // 👈 Nombre completo para romper la ambigüedad
+            Rol = RolUsuario.Administrador, 
             Activo = true
         };
 

@@ -20,7 +20,7 @@ public class LoginUseCase
 
     public async Task<RespuestaLoginDTO> EjecutarAsync(LoginDTO dto)
     {
-        Usuario usuario = await _unitOfWork.Usuarios.ObtenerUsuarioPorCorreoAsync(dto.Correo);
+        Usuario? usuario = await _unitOfWork.Usuarios.ObtenerUsuarioPorCorreoAsync(dto.Correo);
 
         if (usuario == null)
         {

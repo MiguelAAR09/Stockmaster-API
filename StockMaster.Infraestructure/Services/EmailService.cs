@@ -1,25 +1,27 @@
 
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using MailKit;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using StockMaster.Application.Interfaces;
+using StockMaster.Infraestructure.Settings;
 namespace StockMaster.Infraestructure.Services;
 
 public class EmailService : IEmailService
 {
-    private readonly IConfiguration _configuration;
+    private readonly SmtpSettings _smtp;
 
-    public EmailService(IConfiguration config)
+    public EmailService(IOptions<SmtpSettings> options)
     {
-        _configuration = config;
+        _smtp = options.Value;
     }
 
     public async Task EnviarCorreoAsync(string destinatario, string asunto, string cuerpo, bool esHtml = true)
     {
         var email = new MimeMessage();
 
-        email.From.Add(new MailboxAddress(_configuration["SmtpSettings:SenderName"], _configuration["SmtpSettings:SenderEmail"]));
+        email.From.Add(new MailboxAddress(_smtp.SenderName, _smtp.SenderEmail));
 
         email.To.Add(MailboxAddress.Parse(destinatario));
         email.Subject = asunto;
@@ -41,13 +43,13 @@ public class EmailService : IEmailService
 
         // Conexión segura usando STARTTLS
         await smtp.ConnectAsync(
-            _configuration["SmtpSettings:Server"],
-            int.Parse(_configuration["SmtpSettings:Port"] ?? "587"),
+            _smtp.Server,
+            _smtp.Port,
             SecureSocketOptions.StartTls);
 
         await smtp.AuthenticateAsync(
-             _configuration["SmtpSettings:Username"],
-             _configuration["SmtpSettings:Password"]);
+            _smtp.Username,
+            _smtp.Password);
 
         await smtp.SendAsync(email);
         await smtp.DisconnectAsync(true);

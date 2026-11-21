@@ -13,8 +13,3 @@ public class RespuestaLoginDTO
 
 }
 
-public enum RolUsuario
-{
-    Administrador,
-    Cliente
-}
